@@ -1,11 +1,19 @@
 {
   "name": "openapi-parser-shark",
   "version": "2.1.1",
-  "description": "generate service code according to swagger document",
+  "description": "generate service code according to OpenAPI document",
   "main": "dist/index.js",
   "bin": {
     "openapi-parser": "dist/bin.js"
   },
+  "keywords": [
+    "OpenAPI",
+    "swagger",
+    "typescript",
+    "auto generate",
+    "axios",
+    "fetch"
+  ],
   "scripts": {
     "build": "tsc && npx copyfiles -f src/template/*.handlebars dist/template"
   },

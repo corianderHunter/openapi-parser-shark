@@ -1,12 +1,12 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "碳足迹平台 -- 接口文档",
+    "description": "test",
     "version": "1.0.0",
-    "title": "碳足迹平台",
-    "contact": { "name": "carbon-footprint" }
+    "title": "test",
+    "contact": { "name": "test" }
   },
-  "host": "carbon-footprint-2.test.fnwintranet.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "tags": [
     { "name": "bom清单-陈敏", "description": "Product Bom List Controller" },

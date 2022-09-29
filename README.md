@@ -1,5 +1,15 @@
 # OPENAPI-PARSESR
 
+## introduction
+
+generate service code according to OpenAPI document,support openapi 2.0 and openapi 3.0
+
+### what's tag
+
+![image](./tag1.jpg)
+![image](./tag2.jpg)
+![image](./tag3.jpg)
+
 ## installation
 
 ```shell
@@ -19,7 +29,7 @@ openapi-parser
 
 Options:
 -c, --configFilePath <configFilePath> read configuration file to generate service file
--s, --src <src> the url(path) to get openapi-json <src>
+-s, --src <src> the url(path) to get openapi-json,from local disk、https or http resource <src>
 -d, --dest <dest> the folder that parser generated the file to,default to be the current path<dest>
 -n, --name <name> file name,default to be [api].ts<name>
 -t, --tags <tags> file name,default to be [tags].ts<name>
