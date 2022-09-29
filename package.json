@@ -1,7 +1,7 @@
 {
   "name": "openapi-parser-shark",
-  "version": "2.0.1",
-  "description": "",
+  "version": "2.1.1",
+  "description": "generate service code according to swagger document",
   "main": "dist/index.js",
   "bin": {
     "openapi-parser": "dist/bin.js"
@@ -16,12 +16,11 @@
     "@types/axios": "^0.14.0",
     "@types/lodash": "^4.14.182",
     "@types/node": "^18.6.1",
+    "@types/prettier": "^2.7.0",
     "copyfiles": "^2.4.1"
   },
   "dependencies": {
     "@babel/parser": "^7.19.3",
-    "@types/mustache": "^4.2.1",
-    "@types/prettier": "^2.7.0",
     "axios": "^0.27.2",
     "camelcase": "^7.0.0",
     "commander": "^9.4.0",
