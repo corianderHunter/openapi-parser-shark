@@ -12,7 +12,9 @@ const defaultOutDir = join(resolve())
 const prettierOption: prettier.Options = {
   parser: 'typescript',
   proseWrap: 'always',
-  printWidth: 30,
+  printWidth: 80,
+  semi: false,
+  singleQuote: true,
 }
 
 export const renderApi = (
