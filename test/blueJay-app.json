@@ -1,0 +1,3017 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "bluejay应用端接口文档",
+    "version": "1.0.0",
+    "title": "bluejay"
+  },
+  "host": "localhost:8668",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "医师客户管理接口",
+      "description": "Physician Customer Controller"
+    },
+    { "name": "医师方案接口", "description": "Physician Scheme Controller" },
+    { "name": "医师日程接口", "description": "Physician Calendar Controller" },
+    { "name": "医师用户接口", "description": "Physician User Controller" },
+    { "name": "客户推荐接口", "description": "Customer Recommend Controller" },
+    { "name": "客户支付接口", "description": "Customer Pay Controller" },
+    { "name": "客户方案接口", "description": "Customer Scheme Controller" },
+    { "name": "客户用户接口", "description": "Customer User Controller" }
+  ],
+  "paths": {
+    "/api/customer/pay/fareDetail": {
+      "post": {
+        "tags": ["客户支付接口"],
+        "summary": "方案费用明细",
+        "description": "方案ID",
+        "operationId": "fareDetailUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "commonParam",
+            "description": "方案ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.FareDetail»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/pay/queryPayOrders": {
+      "post": {
+        "tags": ["客户支付接口"],
+        "summary": "分页查询支付记录",
+        "description": "分页查询支付记录",
+        "operationId": "queryPayOrdersUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "pageRequest",
+            "description": "分页查询参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.PageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.PayOrderInfo»»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/pay/queryPayStatus": {
+      "post": {
+        "tags": ["客户支付接口"],
+        "summary": "查询支付结果",
+        "description": "支付订单号",
+        "operationId": "queryPayResultUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payParam",
+            "description": "支付订单号",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.PayParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.PayOrderStatus»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/pay/queryPayString": {
+      "post": {
+        "tags": ["客户支付接口"],
+        "summary": "获取支付串",
+        "description": "支付参数schemeId，couponId",
+        "operationId": "queryPayStringUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payParam",
+            "description": "支付参数schemeId，couponId",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.PayParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.PayResp»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/recommend/queryAdvertisements": {
+      "post": {
+        "tags": ["客户推荐接口"],
+        "summary": "分页查询精品推介",
+        "description": "分页查询精品推介",
+        "operationId": "queryAdvertisementsUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "pageRequest",
+            "description": "分页查询参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.PageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.AdvertisementInfo»»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/recommend/queryArticleDetail": {
+      "post": {
+        "tags": ["客户推荐接口"],
+        "summary": "查询健康文章详情",
+        "description": "文章ID",
+        "operationId": "queryArticleDetailUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "文章ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.RecommendParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.ArticleDetailInfo»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/recommend/queryArticles": {
+      "post": {
+        "tags": ["客户推荐接口"],
+        "summary": "分页查询健康文章",
+        "description": "分页查询健康文章",
+        "operationId": "queryProcessSchemesUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "pageRequest",
+            "description": "分页查询参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.PageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.QuestionnaireInfo»»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/recommend/queryQuestionnaireDetail": {
+      "post": {
+        "tags": ["客户推荐接口"],
+        "summary": "查询问卷详情",
+        "description": "问卷ID",
+        "operationId": "queryQuestionnaireDetailUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "问卷ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.RecommendParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.QuestionnaireDetailInfo»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/recommend/queryQuestionnaires": {
+      "post": {
+        "tags": ["客户推荐接口"],
+        "summary": "分页查询问卷",
+        "description": "分页查询问卷",
+        "operationId": "queryQuestionnairesUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "pageRequest",
+            "description": "分页查询参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.PageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.QuestionnaireInfo»»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/scheme/commitAdditionalInfo ": {
+      "post": {
+        "tags": ["客户方案接口"],
+        "summary": "提交额外个人信息问题答案",
+        "description": "提交额外个人信息问题答案，根据结果确认方案对应任务套件",
+        "operationId": "commitAdditionalInfoUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "问题提交参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.response.AdditionalInfoParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«boolean»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/scheme/competeTask": {
+      "post": {
+        "tags": ["客户方案接口"],
+        "summary": "上报任务完成",
+        "description": "方案ID&任务ID",
+        "operationId": "competeTaskUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "方案ID&任务ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«boolean»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/scheme/confirmSchemePhysician": {
+      "post": {
+        "tags": ["客户方案接口"],
+        "summary": "客户确认关联医师和方案",
+        "description": "方案ID&医师ID",
+        "operationId": "confirmSchemePhysicianUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "方案ID&医师ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«boolean»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/scheme/queryAdditionalInfoQuestion ": {
+      "post": {
+        "tags": ["客户方案接口"],
+        "summary": "查询额外个人信息问题",
+        "description": "方案ID查询额外跟个人信息问题，根据结果确认方案对应任务套件",
+        "operationId": "queryAdditionalInfoQuestionUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "方案ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«List«com.physiotherapy.app.common.response.AdditionalInfo»»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/scheme/queryAssistantQRCode": {
+      "post": {
+        "tags": ["客户方案接口"],
+        "summary": "获取医疗助理二维码",
+        "description": "方案ID",
+        "operationId": "queryAssistantQRCodeUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "方案ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«string»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/scheme/queryHistorySchemes": {
+      "post": {
+        "tags": ["客户方案接口"],
+        "summary": "历史咨询方案",
+        "description": "分页查询参数",
+        "operationId": "queryHistorySchemesUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "pageRequest",
+            "description": "分页查询参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.PageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.HistorySchemeInfo»»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/scheme/queryPhysicians": {
+      "post": {
+        "tags": ["客户方案接口"],
+        "summary": "分页查询查询方案关联医师",
+        "description": "查询方案关联医师",
+        "operationId": "queryPhysiciansUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "分页参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.PageRequest«com.physiotherapy.app.common.response.UserQueryParam»"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.PhysicianInfo»»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/scheme/queryPreviewSchemeDetail": {
+      "post": {
+        "tags": ["客户方案接口"],
+        "summary": "查询购买前预览方案详情",
+        "description": "方案ID",
+        "operationId": "queryPreviewSchemeDetailUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "方案ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.SchemePreviewDetail»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/scheme/queryProcessSchemeDetail": {
+      "post": {
+        "tags": ["客户方案接口"],
+        "summary": "查询查询进行中方案详情",
+        "description": "方案ID",
+        "operationId": "queryProcessSchemeDetailUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "方案ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.SchemeProcessDetail»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/scheme/queryProcessSchemes": {
+      "post": {
+        "tags": ["客户方案接口"],
+        "summary": "分页查询正在参与方案",
+        "description": "分页查询参数",
+        "operationId": "queryProcessSchemesUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "pageRequest",
+            "description": "分页查询参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.PageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.ProcessSchemeInfo»»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/scheme/queryTaskDetail": {
+      "post": {
+        "tags": ["客户方案接口"],
+        "summary": "查询任务详情",
+        "description": "方案ID&任务ID 查询任务详情,需要根据任务类型（视频、音频、文本、问答）来解析content内容视频、音频为文件链接，文本为富文本字符串，问答为JSON串，Q:问题 A:答案 O:选项 D:答案解析例:{\"Q\":\"xxx\",\"D\":\"xxx\",\"A\":\"D\",\"O\":[{\"A\":\"xxx\"}]}",
+        "operationId": "queryTaskDetailUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "方案ID&任务ID",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.SchemeTaskDetail»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/scheme/taskSelfAssessment": {
+      "post": {
+        "tags": ["客户方案接口"],
+        "summary": "任务自我评估提交",
+        "description": "任务自我评估提交",
+        "operationId": "taskSelfAssessmentUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "自我评估提交参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.SchemeTaskFeedbackParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«boolean»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/user/doLogin": {
+      "post": {
+        "tags": ["客户用户接口"],
+        "summary": "客户登录",
+        "description": "客户登录,微信登录时调用该接口，若未绑定手机号则获得授权码之后再次调用本接口",
+        "operationId": "doLoginUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userLoginParam",
+            "description": "用户登录参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.UserLoginParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.LoginInfo»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/user/info": {
+      "get": {
+        "tags": ["客户用户接口"],
+        "summary": "获取客户信息",
+        "description": "获取客户信息",
+        "operationId": "infoUsingGET",
+        "produces": ["*/*"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.UserInfo»"
+            }
+          },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/calendar/addCalendarItem": {
+      "post": {
+        "tags": ["医师日程接口"],
+        "summary": "医师添加日程事项",
+        "description": "年、月、日程事项",
+        "operationId": "addCalendarItemUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "查询日程参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CalendarParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.CustomerCalendarInfo»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/calendar/queryCalendars": {
+      "post": {
+        "tags": ["医师日程接口"],
+        "summary": "查看医师日程",
+        "description": "传参：年、月",
+        "operationId": "queryCalendarsUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "查询日程参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CalendarParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.CustomerCalendarInfo»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/customer/cancelCollectCustomer": {
+      "post": {
+        "tags": ["医师客户管理接口"],
+        "summary": "取消收藏客户",
+        "description": "客户ID",
+        "operationId": "cancelCollectCustomerUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "取消收藏参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«boolean»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/customer/collectCustomer": {
+      "post": {
+        "tags": ["医师客户管理接口"],
+        "summary": "收藏客户",
+        "description": "客户ID",
+        "operationId": "collectCustomerUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "收藏参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«boolean»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/customer/commitSchemeGuide": {
+      "post": {
+        "tags": ["医师客户管理接口"],
+        "summary": "医师提交方案指导",
+        "description": "客户ID&方案ID&指导信息",
+        "operationId": "commitSchemeGuideUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "更新参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.SchemeTaskReviewInfo»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/customer/linkCustomer": {
+      "post": {
+        "tags": ["医师客户管理接口"],
+        "summary": "医师添加客户",
+        "description": "客户ID",
+        "operationId": "linkCustomerUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "添加参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.LinkCustomerParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«boolean»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/customer/queryCustomerByBlueId": {
+      "post": {
+        "tags": ["医师客户管理接口"],
+        "summary": "根据blueId查询用户信息",
+        "description": "blueId",
+        "operationId": "queryCustomerByBlueIdUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "查询参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.LinkCustomerParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.UserInfo»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/customer/queryCustomerDetail": {
+      "post": {
+        "tags": ["医师客户管理接口"],
+        "summary": "查询客户详情",
+        "description": "客户ID",
+        "operationId": "queryCustomerDetailUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "查询客户参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.CustomerInfo»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/customer/queryCustomerInfo": {
+      "post": {
+        "tags": ["医师客户管理接口"],
+        "summary": "分页查询客户信息",
+        "operationId": "queryCustomerInfoUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "查询客户参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.PageRequest«com.physiotherapy.app.common.request.CustomerQueryParam»"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.CustomerInfo»»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/customer/queryCustomerSchemeFeedback": {
+      "post": {
+        "tags": ["医师客户管理接口"],
+        "summary": "查询客户方案任务及反馈信息",
+        "description": "客户ID&方案ID",
+        "operationId": "queryCustomerSchemeFeedbackUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "查询客户参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.SchemeTaskReviewInfo»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/scheme/cancelCollectScheme": {
+      "post": {
+        "tags": ["医师方案接口"],
+        "summary": "取消收藏方案",
+        "description": "方案ID",
+        "operationId": "cancelCollectSchemeUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "取消收藏方案参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«boolean»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/scheme/collectScheme": {
+      "post": {
+        "tags": ["医师方案接口"],
+        "summary": "收藏方案",
+        "description": "方案ID",
+        "operationId": "collectSchemeUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "收藏方案参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«boolean»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/scheme/createScheme": {
+      "post": {
+        "tags": ["医师方案接口"],
+        "summary": "医师自建方案",
+        "operationId": "createSchemeUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CreateSchemeParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«boolean»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/scheme/info": {
+      "post": {
+        "tags": ["医师方案接口"],
+        "summary": "分页查询推荐课程",
+        "operationId": "infoUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "用户登录参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.PageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.SchemeInfo»»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/scheme/queryCollectedScheme": {
+      "post": {
+        "tags": ["医师方案接口"],
+        "summary": "分页查询收藏方案",
+        "operationId": "queryCollectedSchemeUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "查询收藏方案参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.PageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.SchemeInfo»»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/scheme/queryRecommendSchemeDetail": {
+      "post": {
+        "tags": ["医师方案接口"],
+        "summary": "查看推荐方案详情",
+        "description": "方案ID",
+        "operationId": "queryRecommendSchemeDetailUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "param",
+            "description": "查询推荐课程",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.CommonParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.SchemePreviewDetail»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/user/doLogin": {
+      "post": {
+        "tags": ["医师用户接口"],
+        "summary": "医师登录",
+        "description": "医师登录,微信登录时调用该接口，若未绑定手机号则获得授权码之后再次调用本接口",
+        "operationId": "doLoginUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userLoginParam",
+            "description": "用户登录参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.request.UserLoginParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.LoginInfo»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/user/info": {
+      "get": {
+        "tags": ["医师用户接口"],
+        "summary": "获取医师信息",
+        "description": "获取医师信息",
+        "operationId": "infoUsingGET_1",
+        "produces": ["*/*"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.PhysicianInfo»"
+            }
+          },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/physician/user/updatePhysicianInfo": {
+      "post": {
+        "tags": ["医师用户接口"],
+        "summary": "更新医师信息",
+        "description": "更新医师信息",
+        "operationId": "updatePhysicianInfoUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "physicianInfo",
+            "description": "用户登录参数",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.response.PhysicianInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/com.physiotherapy.app.common.Response«boolean»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "securityDefinitions": {
+    "token:": { "type": "apiKey", "name": "token:", "in": "header" }
+  },
+  "definitions": {
+    "SchemeTask": {
+      "type": "object",
+      "properties": {
+        "createTime": { "type": "string" },
+        "customerId": { "type": "integer", "format": "int64" },
+        "id": { "type": "integer", "format": "int64" },
+        "recordStatus": { "type": "integer", "format": "int32" },
+        "schemeId": { "type": "integer", "format": "int64" },
+        "status": { "type": "integer", "format": "int32" },
+        "taskName": { "type": "integer", "format": "int64" },
+        "timeInterval": { "type": "integer", "format": "int32" },
+        "type": { "type": "integer", "format": "int32" },
+        "updateTime": { "type": "string" }
+      },
+      "title": "SchemeTask"
+    },
+    "com.physiotherapy.app.common.PageRequest": {
+      "type": "object",
+      "required": ["pageNo", "pageSize"],
+      "properties": {
+        "condition": { "type": "object", "description": "翻页条件" },
+        "pageNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageNo"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageSize"
+        }
+      },
+      "title": "com.physiotherapy.app.common.PageRequest",
+      "description": "统一翻页请求体"
+    },
+    "com.physiotherapy.app.common.PageRequest«com.physiotherapy.app.common.request.CustomerQueryParam»": {
+      "type": "object",
+      "required": ["pageNo", "pageSize"],
+      "properties": {
+        "condition": {
+          "description": "翻页条件",
+          "$ref": "#/definitions/com.physiotherapy.app.common.request.CustomerQueryParam"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageNo"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageSize"
+        }
+      },
+      "title": "com.physiotherapy.app.common.PageRequest«com.physiotherapy.app.common.request.CustomerQueryParam»",
+      "description": "统一翻页请求体"
+    },
+    "com.physiotherapy.app.common.PageRequest«com.physiotherapy.app.common.response.UserQueryParam»": {
+      "type": "object",
+      "required": ["pageNo", "pageSize"],
+      "properties": {
+        "condition": {
+          "description": "翻页条件",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.UserQueryParam"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageNo"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageSize"
+        }
+      },
+      "title": "com.physiotherapy.app.common.PageRequest«com.physiotherapy.app.common.response.UserQueryParam»",
+      "description": "统一翻页请求体"
+    },
+    "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.AdvertisementInfo»": {
+      "type": "object",
+      "required": ["pageNo", "pageSize", "total"],
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "返回数据",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.AdvertisementInfo"
+          }
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageNo"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageSize"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总条数"
+        }
+      },
+      "title": "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.AdvertisementInfo»",
+      "description": "统一翻页相应体"
+    },
+    "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.CustomerInfo»": {
+      "type": "object",
+      "required": ["pageNo", "pageSize", "total"],
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "返回数据",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.CustomerInfo"
+          }
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageNo"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageSize"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总条数"
+        }
+      },
+      "title": "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.CustomerInfo»",
+      "description": "统一翻页相应体"
+    },
+    "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.HistorySchemeInfo»": {
+      "type": "object",
+      "required": ["pageNo", "pageSize", "total"],
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "返回数据",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.HistorySchemeInfo"
+          }
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageNo"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageSize"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总条数"
+        }
+      },
+      "title": "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.HistorySchemeInfo»",
+      "description": "统一翻页相应体"
+    },
+    "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.PayOrderInfo»": {
+      "type": "object",
+      "required": ["pageNo", "pageSize", "total"],
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "返回数据",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.PayOrderInfo"
+          }
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageNo"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageSize"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总条数"
+        }
+      },
+      "title": "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.PayOrderInfo»",
+      "description": "统一翻页相应体"
+    },
+    "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.PhysicianInfo»": {
+      "type": "object",
+      "required": ["pageNo", "pageSize", "total"],
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "返回数据",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.PhysicianInfo"
+          }
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageNo"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageSize"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总条数"
+        }
+      },
+      "title": "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.PhysicianInfo»",
+      "description": "统一翻页相应体"
+    },
+    "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.ProcessSchemeInfo»": {
+      "type": "object",
+      "required": ["pageNo", "pageSize", "total"],
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "返回数据",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.ProcessSchemeInfo"
+          }
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageNo"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageSize"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总条数"
+        }
+      },
+      "title": "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.ProcessSchemeInfo»",
+      "description": "统一翻页相应体"
+    },
+    "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.QuestionnaireInfo»": {
+      "type": "object",
+      "required": ["pageNo", "pageSize", "total"],
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "返回数据",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.QuestionnaireInfo"
+          }
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageNo"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageSize"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总条数"
+        }
+      },
+      "title": "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.QuestionnaireInfo»",
+      "description": "统一翻页相应体"
+    },
+    "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.SchemeInfo»": {
+      "type": "object",
+      "required": ["pageNo", "pageSize", "total"],
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "返回数据",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.SchemeInfo"
+          }
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageNo"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "pageSize"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总条数"
+        }
+      },
+      "title": "com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.SchemeInfo»",
+      "description": "统一翻页相应体"
+    },
+    "com.physiotherapy.app.common.Response«List«com.physiotherapy.app.common.response.AdditionalInfo»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "type": "array",
+          "description": "数据",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.AdditionalInfo"
+          }
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«List«com.physiotherapy.app.common.response.AdditionalInfo»»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«boolean»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": { "type": "boolean", "description": "数据" },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«boolean»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.AdvertisementInfo»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.AdvertisementInfo»"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.AdvertisementInfo»»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.CustomerInfo»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.CustomerInfo»"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.CustomerInfo»»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.HistorySchemeInfo»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.HistorySchemeInfo»"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.HistorySchemeInfo»»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.PayOrderInfo»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.PayOrderInfo»"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.PayOrderInfo»»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.PhysicianInfo»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.PhysicianInfo»"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.PhysicianInfo»»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.ProcessSchemeInfo»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.ProcessSchemeInfo»"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.ProcessSchemeInfo»»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.QuestionnaireInfo»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.QuestionnaireInfo»"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.QuestionnaireInfo»»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.SchemeInfo»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.SchemeInfo»"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.PageResponse«com.physiotherapy.app.common.response.SchemeInfo»»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.ArticleDetailInfo»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.ArticleDetailInfo"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.ArticleDetailInfo»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.CustomerCalendarInfo»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.CustomerCalendarInfo"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.CustomerCalendarInfo»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.CustomerInfo»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.CustomerInfo"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.CustomerInfo»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.FareDetail»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.FareDetail"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.FareDetail»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.LoginInfo»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.LoginInfo"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.LoginInfo»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.PayOrderStatus»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.PayOrderStatus"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.PayOrderStatus»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.PayResp»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.PayResp"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.PayResp»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.PhysicianInfo»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.PhysicianInfo"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.PhysicianInfo»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.QuestionnaireDetailInfo»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.QuestionnaireDetailInfo"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.QuestionnaireDetailInfo»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.SchemePreviewDetail»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.SchemePreviewDetail"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.SchemePreviewDetail»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.SchemeProcessDetail»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.SchemeProcessDetail"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.SchemeProcessDetail»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.SchemeTaskDetail»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.SchemeTaskDetail"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.SchemeTaskDetail»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.SchemeTaskReviewInfo»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.SchemeTaskReviewInfo"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.SchemeTaskReviewInfo»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.UserInfo»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": {
+          "description": "数据",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.UserInfo"
+        },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«com.physiotherapy.app.common.response.UserInfo»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.Response«string»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "响应码 0000:成功 9999:系统错误 1000:参数错误 1001:没有登录 1002:没有权限"
+        },
+        "data": { "type": "string", "description": "数据" },
+        "msg": { "type": "string", "description": "响应消息" },
+        "success": { "type": "boolean", "description": "是否请求成功" }
+      },
+      "title": "com.physiotherapy.app.common.Response«string»",
+      "description": "统一返回消息体"
+    },
+    "com.physiotherapy.app.common.request.CalendarParam": {
+      "type": "object",
+      "properties": {
+        "calendarItemInfo": {
+          "description": "日程事项",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.CalendarItemInfo"
+        },
+        "month": {
+          "type": "integer",
+          "format": "int64",
+          "description": "月份"
+        },
+        "year": { "type": "integer", "format": "int64", "description": "年份" }
+      },
+      "title": "com.physiotherapy.app.common.request.CalendarParam",
+      "description": "医师日程请求"
+    },
+    "com.physiotherapy.app.common.request.CommonParam": {
+      "type": "object",
+      "properties": {
+        "customerId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "客户ID"
+        },
+        "physicianId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "医师ID"
+        },
+        "schemeId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "方案ID"
+        },
+        "taskId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "任务ID"
+        }
+      },
+      "title": "com.physiotherapy.app.common.request.CommonParam",
+      "description": "通用请求体"
+    },
+    "com.physiotherapy.app.common.request.CreateSchemeParam": {
+      "type": "object",
+      "properties": {
+        "applyGroup": { "type": "string", "description": "方案适用人群" },
+        "description": { "type": "string", "description": "方案描述" },
+        "difficulty": {
+          "type": "string",
+          "description": "难度 0:容易 1:中等 2:困难"
+        },
+        "summary": { "type": "string", "description": "方案简介" },
+        "targetTag": {
+          "type": "string",
+          "description": "方案目标tag，逗号分割(主要功效)"
+        },
+        "tasks": {
+          "type": "array",
+          "description": "方案任务",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.request.CreateSchemeTaskParam"
+          }
+        },
+        "thumbnail": { "type": "string", "description": "方案缩略图" },
+        "title": { "type": "string", "description": "方案名称" }
+      },
+      "title": "com.physiotherapy.app.common.request.CreateSchemeParam",
+      "description": "自建方案请求"
+    },
+    "com.physiotherapy.app.common.request.CreateSchemeTaskParam": {
+      "type": "object",
+      "properties": {
+        "actions": {
+          "type": "array",
+          "description": "任务动作 只需填写id",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.SchemeTaskActionInfo"
+          }
+        },
+        "taskName": { "type": "string", "description": "任务名称" },
+        "timeInterval": {
+          "type": "string",
+          "description": "时间间隔 1:早上 2:下午 3:晚上"
+        },
+        "type": {
+          "type": "string",
+          "description": "任务类型 1:文本 2:视频  3:音频 4:问答"
+        }
+      },
+      "title": "com.physiotherapy.app.common.request.CreateSchemeTaskParam",
+      "description": "创建方案任务"
+    },
+    "com.physiotherapy.app.common.request.CustomerQueryParam": {
+      "type": "object",
+      "properties": {
+        "collectFlag": {
+          "type": "string",
+          "description": "是否收藏 0:没有 1:收藏"
+        },
+        "name": { "type": "string", "description": "客户姓名" }
+      },
+      "title": "com.physiotherapy.app.common.request.CustomerQueryParam",
+      "description": "查询条件条件"
+    },
+    "com.physiotherapy.app.common.request.LinkCustomerParam": {
+      "type": "object",
+      "properties": {
+        "blueId": { "type": "string", "description": "blueId" },
+        "customerId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID"
+        }
+      },
+      "title": "com.physiotherapy.app.common.request.LinkCustomerParam",
+      "description": "关联用户请求体"
+    },
+    "com.physiotherapy.app.common.request.PayParam": {
+      "type": "object",
+      "properties": {
+        "couponId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "券ID"
+        },
+        "extInfo": {
+          "type": "string",
+          "description": "扩展信息，仅透传不做任何处理"
+        },
+        "orderNo": {
+          "type": "string",
+          "description": "内部支付订单号 用于支付成功后支付状态轮询"
+        },
+        "schemeId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "方案ID"
+        }
+      },
+      "title": "com.physiotherapy.app.common.request.PayParam",
+      "description": "支付请求体"
+    },
+    "com.physiotherapy.app.common.request.RecommendParam": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer", "format": "int64", "description": "id" }
+      },
+      "title": "com.physiotherapy.app.common.request.RecommendParam",
+      "description": "推荐通用请求体"
+    },
+    "com.physiotherapy.app.common.request.SchemeTaskFeedbackParam": {
+      "type": "object",
+      "properties": {
+        "level": { "type": "string", "description": "反馈等级 1-5" },
+        "schemeId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "方案ID"
+        },
+        "taskId": { "type": "string", "description": "任务ID" },
+        "type": {
+          "type": "string",
+          "description": "反馈类型 1:疼痛 2:劳累 3:强度"
+        }
+      },
+      "title": "com.physiotherapy.app.common.request.SchemeTaskFeedbackParam",
+      "description": "客户任务反馈"
+    },
+    "com.physiotherapy.app.common.request.UserLoginParam": {
+      "type": "object",
+      "properties": {
+        "authCode": { "type": "string", "description": "授权手机号authCode" },
+        "wxCode": { "type": "string", "description": "微信登录code" }
+      },
+      "title": "com.physiotherapy.app.common.request.UserLoginParam",
+      "description": "登录请求返回体"
+    },
+    "com.physiotherapy.app.common.response.AdditionalInfo": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer", "format": "int64", "description": "id" },
+        "options": {
+          "type": "string",
+          "description": "选项 格式:{\"A\":1,\"B\":2}"
+        },
+        "title": { "type": "string", "description": "标题" }
+      },
+      "title": "com.physiotherapy.app.common.response.AdditionalInfo",
+      "description": "额外问题"
+    },
+    "com.physiotherapy.app.common.response.AdditionalInfoParam": {
+      "type": "object",
+      "properties": {
+        "answer": { "type": "string", "description": "标题" },
+        "id": { "type": "integer", "format": "int64", "description": "id" }
+      },
+      "title": "com.physiotherapy.app.common.response.AdditionalInfoParam",
+      "description": "额外问题"
+    },
+    "com.physiotherapy.app.common.response.AdvertisementInfo": {
+      "type": "object",
+      "properties": {
+        "content": { "type": "string", "description": "产品介绍" },
+        "id": { "type": "string", "description": "ID" },
+        "price": { "type": "string", "description": "价格（元）" },
+        "releaseDate": { "type": "string", "description": "发布时间" },
+        "summary": { "type": "string", "description": "简介" },
+        "thumbnail": { "type": "string", "description": "方案缩略图" },
+        "title": { "type": "string", "description": "标题" },
+        "url": { "type": "string", "description": "跳转链接" }
+      },
+      "title": "com.physiotherapy.app.common.response.AdvertisementInfo",
+      "description": "精品推荐信息"
+    },
+    "com.physiotherapy.app.common.response.ArticleDetailInfo": {
+      "type": "object",
+      "properties": {
+        "content": { "type": "string", "description": "文章内容 富文本" },
+        "id": { "type": "string", "description": "ID" },
+        "releaseDate": { "type": "string", "description": "发布时间" },
+        "summary": { "type": "string", "description": "简介" },
+        "title": { "type": "string", "description": "标题" }
+      },
+      "title": "com.physiotherapy.app.common.response.ArticleDetailInfo",
+      "description": "精品推荐信息"
+    },
+    "com.physiotherapy.app.common.response.CalendarItemInfo": {
+      "type": "object",
+      "properties": {
+        "endTime": { "type": "string", "description": "结束时间 格式HH:mm:ss" },
+        "startTime": {
+          "type": "string",
+          "description": "开始时间 格式HH:mm:ss"
+        },
+        "title": { "type": "string", "description": "事项名称" }
+      },
+      "title": "com.physiotherapy.app.common.response.CalendarItemInfo",
+      "description": "日期事项"
+    },
+    "com.physiotherapy.app.common.response.CompleteSchemeInfo": {
+      "type": "object",
+      "properties": {
+        "applyGroup": { "type": "string", "description": "方案适用人群" },
+        "collectFlag": {
+          "type": "string",
+          "description": "是否被收藏 0:没有 1:收藏"
+        },
+        "dailyDuration": {
+          "type": "string",
+          "description": "课程日时长（分钟）"
+        },
+        "difficulty": {
+          "type": "string",
+          "description": "难度 0:容易 1:中等 2:困难"
+        },
+        "endTime": { "type": "string", "description": "结束时间" },
+        "price": { "type": "string", "description": "价格（元）" },
+        "schemeId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "唯一方案ID"
+        },
+        "startTime": { "type": "string", "description": "开始时间" },
+        "summary": { "type": "string", "description": "方案简介" },
+        "targetTag": {
+          "type": "string",
+          "description": "方案目标tag，逗号分割"
+        },
+        "thumbnail": { "type": "string", "description": "方案缩略图" },
+        "title": { "type": "string", "description": "方案名称" },
+        "totalDuration": { "type": "string", "description": "课程总时长（天）" }
+      },
+      "title": "com.physiotherapy.app.common.response.CompleteSchemeInfo",
+      "description": "已完成方案"
+    },
+    "com.physiotherapy.app.common.response.CouponInfo": {
+      "type": "object",
+      "properties": {
+        "couponId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "优惠券ID"
+        },
+        "description": { "type": "string", "description": "优惠券描述" },
+        "title": { "type": "string", "description": "优惠券标题" },
+        "type": { "type": "string", "description": "优惠券类型 1:满减 2:打折" }
+      },
+      "title": "com.physiotherapy.app.common.response.CouponInfo",
+      "description": "优惠券信息"
+    },
+    "com.physiotherapy.app.common.response.CustomerCalendarInfo": {
+      "type": "object",
+      "properties": {
+        "day": { "type": "string", "description": "日期" },
+        "month": { "type": "string", "description": "月份" },
+        "status": {
+          "type": "string",
+          "description": "事项状态 1:已完成 2:待完成 3:过期未完成"
+        }
+      },
+      "title": "com.physiotherapy.app.common.response.CustomerCalendarInfo",
+      "description": "日期信息"
+    },
+    "com.physiotherapy.app.common.response.CustomerInfo": {
+      "type": "object",
+      "properties": {
+        "blueId": { "type": "string", "description": "blueId" },
+        "collectFlag": {
+          "type": "string",
+          "description": "是否被收藏 0:没有 1:收藏"
+        },
+        "completeSchemes": {
+          "type": "array",
+          "description": "历史联系方案",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.CompleteSchemeInfo"
+          }
+        },
+        "headImg": { "type": "string", "description": "头像" },
+        "id": { "type": "integer", "format": "int64", "description": "用户ID" },
+        "linkTime": { "type": "string", "description": "加入时间" },
+        "mobile": { "type": "string", "description": "手机号" },
+        "nickName": { "type": "string", "description": "昵称" },
+        "processScheme": {
+          "description": "正在练习方案",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.SchemeInfo"
+        },
+        "processSchemes": {
+          "type": "array",
+          "description": "正在练习方案",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.SchemeReviewDetail"
+          }
+        }
+      },
+      "title": "com.physiotherapy.app.common.response.CustomerInfo",
+      "description": "客户详细信息"
+    },
+    "com.physiotherapy.app.common.response.FareDetail": {
+      "type": "object",
+      "properties": {
+        "actualFare": { "type": "string", "description": "实际费用" },
+        "collectFlag": {
+          "type": "string",
+          "description": "是否被收藏 0:没有 1:收藏"
+        },
+        "couponFare": { "type": "string", "description": "优惠费用" },
+        "couponInfo": {
+          "description": "优惠券信息",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.CouponInfo"
+        },
+        "dailyDuration": {
+          "type": "string",
+          "description": "课程日时长（分钟）"
+        },
+        "difficulty": {
+          "type": "string",
+          "description": "难度 0:容易 1:中等 2:困难"
+        },
+        "price": { "type": "string", "description": "价格（元）" },
+        "schemeId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "唯一方案ID"
+        },
+        "summary": { "type": "string", "description": "方案简介" },
+        "targetTag": {
+          "type": "string",
+          "description": "方案目标tag，逗号分割"
+        },
+        "thumbnail": { "type": "string", "description": "方案缩略图" },
+        "title": { "type": "string", "description": "方案名称" },
+        "totalDuration": {
+          "type": "string",
+          "description": "课程总时长（天）"
+        },
+        "totalFare": { "type": "string", "description": "总费用" }
+      },
+      "title": "com.physiotherapy.app.common.response.FareDetail",
+      "description": "支付费用详情"
+    },
+    "com.physiotherapy.app.common.response.HistorySchemeInfo": {
+      "type": "object",
+      "properties": {
+        "collectFlag": {
+          "type": "string",
+          "description": "是否被收藏 0:没有 1:收藏"
+        },
+        "dailyDuration": {
+          "type": "string",
+          "description": "课程日时长（分钟）"
+        },
+        "difficulty": {
+          "type": "string",
+          "description": "难度 0:容易 1:中等 2:困难"
+        },
+        "price": { "type": "string", "description": "价格（元）" },
+        "recommendBy": { "type": "string", "description": "推荐人" },
+        "schemeId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "唯一方案ID"
+        },
+        "summary": { "type": "string", "description": "方案简介" },
+        "targetTag": {
+          "type": "string",
+          "description": "方案目标tag，逗号分割"
+        },
+        "thumbnail": { "type": "string", "description": "方案缩略图" },
+        "title": { "type": "string", "description": "方案名称" },
+        "totalDuration": { "type": "string", "description": "课程总时长（天）" }
+      },
+      "title": "com.physiotherapy.app.common.response.HistorySchemeInfo",
+      "description": "已咨询历史方案信息"
+    },
+    "com.physiotherapy.app.common.response.LoginInfo": {
+      "type": "object",
+      "properties": {
+        "bindMobile": { "type": "boolean", "description": "是否绑定手机号" },
+        "token": { "type": "string", "description": "登录token" },
+        "unionId": { "type": "string", "description": "微信unionId" },
+        "wxCode": {
+          "type": "integer",
+          "format": "int64",
+          "description": "微信登录code"
+        }
+      },
+      "title": "com.physiotherapy.app.common.response.LoginInfo",
+      "description": "登录返回信息"
+    },
+    "com.physiotherapy.app.common.response.PayOrderInfo": {
+      "type": "object",
+      "properties": {
+        "couponId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "优惠券ID"
+        },
+        "orderNo": { "type": "string", "description": "支付订单订单号" },
+        "status": {
+          "type": "string",
+          "description": "订单状态 1:创建 2:支付中 3:支付成功 4:失效"
+        },
+        "title": { "type": "string", "description": "优惠券标题" }
+      },
+      "title": "com.physiotherapy.app.common.response.PayOrderInfo",
+      "description": "支付订单信息"
+    },
+    "com.physiotherapy.app.common.response.PayOrderStatus": {
+      "type": "object",
+      "properties": {
+        "orderNo": { "type": "string", "description": "支付订单订单号" },
+        "status": {
+          "type": "string",
+          "description": "订单状态 1:创建 2:支付中 3:支付成功 4:失效"
+        }
+      },
+      "title": "com.physiotherapy.app.common.response.PayOrderStatus",
+      "description": "支付订单状态"
+    },
+    "com.physiotherapy.app.common.response.PayResp": {
+      "type": "object",
+      "properties": {
+        "extInfo": {
+          "type": "string",
+          "description": "扩展信息，仅透传不做任何处理"
+        },
+        "orderNo": { "type": "string", "description": "支付订单号" },
+        "sdk": { "type": "string", "description": "支付串 用于拉起三方支付" }
+      },
+      "title": "com.physiotherapy.app.common.response.PayResp",
+      "description": "支付请求响应"
+    },
+    "com.physiotherapy.app.common.response.PhysicianInfo": {
+      "type": "object",
+      "properties": {
+        "blueId": { "type": "string", "description": "blueId" },
+        "briefInfo": { "type": "string", "description": "医师简介" },
+        "headImg": { "type": "string", "description": "头像" },
+        "id": { "type": "integer", "format": "int64", "description": "用户ID" },
+        "mobile": { "type": "string", "description": "手机号" },
+        "nickName": { "type": "string", "description": "昵称" },
+        "organization": { "type": "string", "description": "所属机构" }
+      },
+      "title": "com.physiotherapy.app.common.response.PhysicianInfo",
+      "description": "医师信息"
+    },
+    "com.physiotherapy.app.common.response.ProcessSchemeInfo": {
+      "type": "object",
+      "properties": {
+        "collectFlag": {
+          "type": "string",
+          "description": "是否被收藏 0:没有 1:收藏"
+        },
+        "dailyDuration": {
+          "type": "string",
+          "description": "课程日时长（分钟）"
+        },
+        "difficulty": {
+          "type": "string",
+          "description": "难度 0:容易 1:中等 2:困难"
+        },
+        "price": { "type": "string", "description": "价格（元）" },
+        "processCurrent": { "type": "string", "description": "当前进度（天）" },
+        "processTotal": { "type": "string", "description": "总进度（天）" },
+        "schemeId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "唯一方案ID"
+        },
+        "startTime": { "type": "string", "description": "开始时间" },
+        "summary": { "type": "string", "description": "方案简介" },
+        "targetTag": {
+          "type": "string",
+          "description": "方案目标tag，逗号分割"
+        },
+        "thumbnail": { "type": "string", "description": "方案缩略图" },
+        "title": { "type": "string", "description": "方案名称" },
+        "totalDuration": { "type": "string", "description": "课程总时长（天）" }
+      },
+      "title": "com.physiotherapy.app.common.response.ProcessSchemeInfo",
+      "description": "进行中方案信息"
+    },
+    "com.physiotherapy.app.common.response.QuestionInfo": {
+      "type": "object",
+      "properties": {
+        "answer": { "type": "string", "description": "答案" },
+        "explainText": { "type": "string", "description": "答案解析" },
+        "id": { "type": "string", "description": "ID" },
+        "question": { "type": "string", "description": "问题" },
+        "sort": { "type": "string", "description": "顺序" }
+      },
+      "title": "com.physiotherapy.app.common.response.QuestionInfo",
+      "description": "问卷调查"
+    },
+    "com.physiotherapy.app.common.response.QuestionnaireDetailInfo": {
+      "type": "object",
+      "properties": {
+        "content": { "type": "string", "description": "问卷描述" },
+        "id": { "type": "string", "description": "ID" },
+        "questions": {
+          "type": "array",
+          "description": "问卷问题列表",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.QuestionInfo"
+          }
+        },
+        "releaseDate": { "type": "string", "description": "发布时间" },
+        "summary": { "type": "string", "description": "简介" },
+        "title": { "type": "string", "description": "标题" }
+      },
+      "title": "com.physiotherapy.app.common.response.QuestionnaireDetailInfo",
+      "description": "精品推荐信息"
+    },
+    "com.physiotherapy.app.common.response.QuestionnaireInfo": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "ID" },
+        "releaseDate": { "type": "string", "description": "发布时间" },
+        "summary": { "type": "string", "description": "简介" },
+        "title": { "type": "string", "description": "标题" }
+      },
+      "title": "com.physiotherapy.app.common.response.QuestionnaireInfo",
+      "description": "精品推荐信息"
+    },
+    "com.physiotherapy.app.common.response.SchemeInfo": {
+      "type": "object",
+      "properties": {
+        "collectFlag": {
+          "type": "string",
+          "description": "是否被收藏 0:没有 1:收藏"
+        },
+        "dailyDuration": {
+          "type": "string",
+          "description": "课程日时长（分钟）"
+        },
+        "difficulty": {
+          "type": "string",
+          "description": "难度 0:容易 1:中等 2:困难"
+        },
+        "price": { "type": "string", "description": "价格（元）" },
+        "schemeId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "唯一方案ID"
+        },
+        "summary": { "type": "string", "description": "方案简介" },
+        "targetTag": {
+          "type": "string",
+          "description": "方案目标tag，逗号分割"
+        },
+        "thumbnail": { "type": "string", "description": "方案缩略图" },
+        "title": { "type": "string", "description": "方案名称" },
+        "totalDuration": { "type": "string", "description": "课程总时长（天）" }
+      },
+      "title": "com.physiotherapy.app.common.response.SchemeInfo",
+      "description": "方案信息"
+    },
+    "com.physiotherapy.app.common.response.SchemePreviewDetail": {
+      "type": "object",
+      "properties": {
+        "applyGroup": { "type": "string", "description": "方案适用人群" },
+        "collectFlag": {
+          "type": "string",
+          "description": "是否被收藏 0:没有 1:收藏"
+        },
+        "dailyDuration": {
+          "type": "string",
+          "description": "课程日时长（分钟）"
+        },
+        "description": { "type": "string", "description": "方案描述" },
+        "difficulty": {
+          "type": "string",
+          "description": "难度 0:容易 1:中等 2:困难"
+        },
+        "numTimes": { "type": "string", "description": "方案已购数" },
+        "price": { "type": "string", "description": "方案价格（元）" },
+        "recommendBy": {
+          "description": "推荐医师信息",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.PhysicianInfo"
+        },
+        "schemeId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "唯一方案ID"
+        },
+        "summary": { "type": "string", "description": "方案简介" },
+        "targetTag": {
+          "type": "string",
+          "description": "方案目标tag，逗号分割"
+        },
+        "tasks": {
+          "type": "array",
+          "description": "课程包含任务",
+          "items": { "$ref": "#/definitions/SchemeTask" }
+        },
+        "thumbnail": { "type": "string", "description": "方案缩略图" },
+        "title": { "type": "string", "description": "方案名称" },
+        "totalDuration": { "type": "string", "description": "课程总时长（天）" }
+      },
+      "title": "com.physiotherapy.app.common.response.SchemePreviewDetail",
+      "description": "方案购买预览详情"
+    },
+    "com.physiotherapy.app.common.response.SchemeProcessDetail": {
+      "type": "object",
+      "properties": {
+        "applyGroup": { "type": "string", "description": "方案适用人群" },
+        "collectFlag": {
+          "type": "string",
+          "description": "是否被收藏 0:没有 1:收藏"
+        },
+        "dailyDuration": {
+          "type": "string",
+          "description": "课程日时长（分钟）"
+        },
+        "description": {
+          "type": "integer",
+          "format": "int64",
+          "description": "方案描述"
+        },
+        "difficulty": {
+          "type": "string",
+          "description": "难度 0:容易 1:中等 2:困难"
+        },
+        "guide": { "type": "string", "description": "医师指导" },
+        "numTimes": { "type": "string", "description": "方案已购数" },
+        "price": { "type": "string", "description": "方案价格（元）" },
+        "recommendBy": {
+          "description": "推荐医师信息",
+          "$ref": "#/definitions/com.physiotherapy.app.common.response.PhysicianInfo"
+        },
+        "schemeId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "唯一方案ID"
+        },
+        "summary": { "type": "string", "description": "方案简介" },
+        "targetTag": {
+          "type": "string",
+          "description": "方案目标tag，逗号分割"
+        },
+        "tasks": {
+          "type": "array",
+          "description": "课程包含任务",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.SchemeTaskInfo"
+          }
+        },
+        "thumbnail": { "type": "string", "description": "方案缩略图" },
+        "title": { "type": "string", "description": "方案名称" },
+        "totalDuration": { "type": "string", "description": "课程总时长（天）" }
+      },
+      "title": "com.physiotherapy.app.common.response.SchemeProcessDetail",
+      "description": "方案进行详情"
+    },
+    "com.physiotherapy.app.common.response.SchemeReviewDetail": {
+      "type": "object",
+      "properties": {
+        "applyGroup": { "type": "string", "description": "方案适用人群" },
+        "calendars": {
+          "type": "array",
+          "description": "日程",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.CustomerCalendarInfo"
+          }
+        },
+        "collectFlag": {
+          "type": "string",
+          "description": "是否被收藏 0:没有 1:收藏"
+        },
+        "currentMonth": { "type": "string", "description": "当前月份" },
+        "dailyDuration": {
+          "type": "string",
+          "description": "课程日时长（分钟）"
+        },
+        "description": { "type": "string", "description": "方案描述" },
+        "difficulty": {
+          "type": "string",
+          "description": "难度 0:容易 1:中等 2:困难"
+        },
+        "guide": { "type": "string", "description": "医师指导信息" },
+        "price": { "type": "string", "description": "价格（元）" },
+        "schemeId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "唯一方案ID"
+        },
+        "summary": { "type": "string", "description": "方案简介" },
+        "targetTag": {
+          "type": "string",
+          "description": "方案目标tag，逗号分割"
+        },
+        "thumbnail": { "type": "string", "description": "方案缩略图" },
+        "title": { "type": "string", "description": "方案名称" },
+        "totalDuration": { "type": "string", "description": "课程总时长（天）" }
+      },
+      "title": "com.physiotherapy.app.common.response.SchemeReviewDetail",
+      "description": "医师查看客户方案详情"
+    },
+    "com.physiotherapy.app.common.response.SchemeTaskActionInfo": {
+      "type": "object",
+      "properties": {
+        "content": { "type": "string", "description": "任务动作内容" },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "任务动作ID"
+        },
+        "sort": { "type": "integer", "format": "int32", "description": "排序" }
+      },
+      "title": "com.physiotherapy.app.common.response.SchemeTaskActionInfo",
+      "description": "任务动作信息"
+    },
+    "com.physiotherapy.app.common.response.SchemeTaskDetail": {
+      "type": "object",
+      "properties": {
+        "actions": {
+          "type": "array",
+          "description": "任务动作列表",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.SchemeTaskActionInfo"
+          }
+        },
+        "feedbacks": {
+          "type": "array",
+          "description": "任务自我评估",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.SchemeTaskFeedbackInfo"
+          }
+        }
+      },
+      "title": "com.physiotherapy.app.common.response.SchemeTaskDetail",
+      "description": "任务详情"
+    },
+    "com.physiotherapy.app.common.response.SchemeTaskFeedbackInfo": {
+      "type": "object",
+      "properties": {
+        "level": { "type": "string", "description": "反馈等级 1-5" },
+        "type": {
+          "type": "string",
+          "description": "反馈类型 1:疼痛 2:劳累 3:强度"
+        }
+      },
+      "title": "com.physiotherapy.app.common.response.SchemeTaskFeedbackInfo",
+      "description": "客户任务反馈"
+    },
+    "com.physiotherapy.app.common.response.SchemeTaskInfo": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer", "format": "int64", "description": "任务ID" },
+        "status": { "type": "string", "description": "锁定状态 0:锁定 1:解锁" },
+        "taskName": { "type": "string", "description": "任务名称" },
+        "timeInterval": {
+          "type": "string",
+          "description": "时间间隔 1:早上 2:下午 3:晚上"
+        },
+        "type": {
+          "type": "string",
+          "description": "任务类型 1:文本 2:视频  3:音频 4:问答"
+        }
+      },
+      "title": "com.physiotherapy.app.common.response.SchemeTaskInfo",
+      "description": "任务信息"
+    },
+    "com.physiotherapy.app.common.response.SchemeTaskReviewInfo": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer", "format": "int64", "description": "任务ID" },
+        "taskName": { "type": "string", "description": "任务名称" },
+        "tasks": {
+          "type": "array",
+          "description": "方案任务",
+          "items": {
+            "$ref": "#/definitions/com.physiotherapy.app.common.response.SchemeTaskFeedbackInfo"
+          }
+        },
+        "timeInterval": {
+          "type": "string",
+          "description": "时间间隔 1:早上 2:下午 3:晚上"
+        }
+      },
+      "title": "com.physiotherapy.app.common.response.SchemeTaskReviewInfo",
+      "description": "医师查看客户任务反馈信息"
+    },
+    "com.physiotherapy.app.common.response.UserInfo": {
+      "type": "object",
+      "properties": {
+        "blueId": { "type": "string", "description": "blueId" },
+        "headImg": { "type": "string", "description": "头像" },
+        "id": { "type": "integer", "format": "int64", "description": "用户ID" },
+        "mobile": { "type": "string", "description": "手机号" },
+        "nickName": { "type": "string", "description": "昵称" }
+      },
+      "title": "com.physiotherapy.app.common.response.UserInfo",
+      "description": "登录成功返回消息"
+    },
+    "com.physiotherapy.app.common.response.UserQueryParam": {
+      "type": "object",
+      "properties": {
+        "nickName": { "type": "string", "description": "昵称" },
+        "organization": { "type": "string", "description": "所属机构" },
+        "schemeId": { "type": "string", "description": "方案ID" }
+      },
+      "title": "com.physiotherapy.app.common.response.UserQueryParam",
+      "description": "用户查询消息"
+    }
+  }
+}
