@@ -6,9 +6,9 @@ generate service code according to OpenAPI document,support openapi 2.0 and open
 
 ### what's tag
 
-![image](./tag1.jpg)
-![image](./tag2.jpg)
-![image](./tag3.jpg)
+![image](https://i.imgur.com/QzoWf7U.jpeg)
+![image](https://i.imgur.com/V6Dv0mR.jpg)
+![image](https://i.imgur.com/RnkJCMI.jpg)
 
 ## installation
 
