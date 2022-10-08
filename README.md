@@ -4,6 +4,11 @@
 
 generate service code according to OpenAPI document,support openapi 2.0 and openapi 3.0
 
+### Emmmmm
+
+- typescript.auto generate data model from openapi schema.
+- flexibility.organize your code by specifying tag.
+
 ### what's tag
 
 ![image](https://i.imgur.com/QzoWf7U.jpeg)
