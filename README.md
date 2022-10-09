@@ -37,7 +37,7 @@ Options:
 -s, --src <src> the url(path) to get openapi-json,from local disk、https or http resource <src>
 -d, --dest <dest> the folder that parser generated the file to,default to be the current path<dest>
 -n, --name <name> file name,default to be [api].ts<name>
--t, --tags <tags> file name,default to be [tags].ts<name>
+-t, --tags <tags> specify tags,default to be empty and create full service code<name>
 -h, --help display help for command
 ```
 
