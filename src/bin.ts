@@ -56,7 +56,7 @@ if (!configFilePath && !src) {
           outputPath,
           serviceImportPath,
           name: serviceName,
-          fileSource: src,
+          fileSource: url,
         })
       }
     } else {
