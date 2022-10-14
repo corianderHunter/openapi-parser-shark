@@ -10,7 +10,7 @@ import {
   linkReferenceObject,
   transformSchema,
 } from '../parser/index'
-import { ComponentsProp, ReferenceObject, SchemaObject } from '../types'
+import { ComponentsProp, ReferenceObject } from '../types'
 import camelCase from '../helper/camelCase'
 
 //是SchemaObject还是ReferenceObject
@@ -101,22 +101,37 @@ Handlebars.registerPartial('generateMethodName', ({ path, method }) => {
 })
 
 //获取方法参数名
-Handlebars.registerPartial('getAllParamsComment', (operationObject) => {
-  const result = getAllParams(operationObject)
-  const { params, body } = result
-  const paramsArr = params.map(
-    ({ name, type, description }) =>
-      `* @param {${type}} ${name} ${description}\n`
-  )
-  if (body.type) {
-    paramsArr.push(`* @param {${body.type}} [body] ${body.description}\n`)
+Handlebars.registerPartial(
+  'getAllParamsComment',
+  ({ operationObject, method }) => {
+    const result = getAllParams(operationObject, method)
+    const { params, body } = result
+    const paramsArr = params.map(
+      ({ name, type, description }) =>
+        `* @param {${type}} ${name} ${description}\n`
+    )
+    if (
+      body.type &&
+      ![
+        'get',
+        'GET',
+        'delete',
+        'DELETE',
+        'head',
+        'HEAD',
+        'options',
+        'OPTIONS',
+      ].includes(method)
+    ) {
+      paramsArr.push(`* @param {${body.type}} [body] ${body.description}\n`)
+    }
+    return paramsArr.join('')
   }
-  return paramsArr.join('')
-})
+)
 
 //获取参数 注释
 Handlebars.registerPartial('getAllParams', ({ operationObject, method }) => {
-  const result = getAllParams(operationObject)
+  const result = getAllParams(operationObject, method)
   const { params, body } = result
   let bodyParamString = ''
   if (
@@ -144,8 +159,8 @@ Handlebars.registerPartial('getAllParams', ({ operationObject, method }) => {
 //构造 axios params data 函数行
 Handlebars.registerPartial(
   'getParamsPartial',
-  ({ path, operationObject, method }) => {
-    const result = getAllParams(operationObject)
+  ({ operationObject, method }) => {
+    const result = getAllParams(operationObject, method)
     const { params: paramsValue } = result
     const paramsPartialString = paramsValue.reduce((s, v) => {
       s = s + `${v.name},`

@@ -96,7 +96,7 @@ export interface {{@key}} {
 /**
  * @tags {{#each tags}}{{this}}{{/each}}
  * @summary {{summary}}
- {{> getAllParamsComment this}}
+ {{> getAllParamsComment operationObject=this method=@key}}
  * @param {AxiosInstance} local_options
  */
 export const {{> generateMethodName path=@../key method=@key}} = async ({{> getAllParams operationObject=this method=@key}}local_options?:AxiosInstance):Promise<{{> responseType responses}}>=>{

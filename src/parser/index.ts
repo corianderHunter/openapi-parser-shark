@@ -244,7 +244,10 @@ export const generateId = (path = '', method = '') => {
   return camelCase(paths.join('_')).replace(escapedChars, '')
 }
 
-export const getAllParams = (operationObject: OperationObject) => {
+export const getAllParams = (
+  operationObject: OperationObject,
+  method?: string
+) => {
   const { parameters = [], requestBody } = operationObject
   const params = parameters
     .filter((val) => !(val as any).$ref)
