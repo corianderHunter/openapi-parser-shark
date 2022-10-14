@@ -44,5 +44,6 @@ import { join } from 'path'
     // optimize: true,
     outputPath: 'test/output',
     name: `api${new Date().getTime()}`,
+    fileSource: 'http://ecb-mengniu-customize.test.fnwintranet.com/v2/api-docs',
   })
 })()

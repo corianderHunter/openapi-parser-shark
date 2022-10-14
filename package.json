@@ -1,6 +1,6 @@
 {
   "name": "openapi-parser-shark",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "generate service code according to OpenAPI document",
   "main": "dist/index.js",
   "bin": {

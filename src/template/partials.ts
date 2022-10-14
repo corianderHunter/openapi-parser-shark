@@ -68,7 +68,7 @@ Handlebars.registerHelper('isSimpleMethod', (method: string) => {
 
 //文档来源
 let fileSource = ''
-export const setFileSource = (value) => fileSource
+export const setFileSource = (value) => (fileSource = value)
 Handlebars.registerPartial('getFileSource', () => {
   return fileSource
 })
