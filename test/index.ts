@@ -20,10 +20,10 @@ import { join } from 'path'
   // const json = await readSpecFromHttp('http://10.19.182.140:8080/v2/api-docs')
 
   // )
-  const json = JSON.parse(readFileSync(join(__dirname, './1.v3.json'), 'utf8'))
-  // const json = JSON.parse(
-  //   readFileSync(join(__dirname, './swagger.json'), 'utf8')
-  // )
+  // const json = JSON.parse(readFileSync(join(__dirname, './1.v3.json'), 'utf8'))
+  const json = JSON.parse(
+    readFileSync(join(__dirname, './swagger.json'), 'utf8')
+  )
   // const json = JSON.parse(
   //   readFileSync(join(__dirname, './blueJay-app.json'), 'utf8')
   // )
@@ -39,5 +39,7 @@ import { join } from 'path'
 
   renderApi(openapi ?? {}, {
     // optimize: true,
+    outputPath: 'test/output',
+    name: `api${new Date().getTime()}`,
   })
 })()

@@ -1,6 +1,7 @@
 import { uniq, upperFirst } from 'lodash'
 import { ComponentsProp, ComponentsPropSuffix } from 'src/types'
 import camelCase from '../helper/camelCase'
+import * as hash from 'object-hash'
 
 export const escapedChars = /\.|\{|\}|\@|\&|\*|\#|\?|\=|\«|\»|\,/g
 
@@ -33,7 +34,6 @@ export const isStandardProp = (prop: string): boolean =>
   /^([a-zA-Z_$])([a-zA-Z0-9_$])*$/.test(prop)
 
 const generateStandardProp = (() => {
-  let index = 0
   return (letter: string, type: ComponentsProp = 'schemas') => {
     const tryStandardProp = uniq(
       letter
@@ -53,7 +53,8 @@ const generateStandardProp = (() => {
       pascalCase: true,
       preserveConsecutiveUppercase: true,
     })
-    return `Standard${suffixPrefix}${index++}`
+    const hashName = hash(letter).slice(0, 8)
+    return `Standard${suffixPrefix}$${hashName}`
   }
 })()
 
