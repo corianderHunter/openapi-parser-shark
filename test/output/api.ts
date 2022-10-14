@@ -1,4 +1,10 @@
 // tslint:disable
+/**
+ * 文件由openapi-parser-shark自动生成，尽量不要手动修改。
+ * 文件中出现类似StandardModel$2a327e1b,这种以$+hash码结尾的变量名，
+ * 说明swagger文档不规范，这里为了保证代码正确，用hash避免了，更好方案
+ * 应该是联系文档输出人，修正文档。
+ */
 
 import { AxiosInstance } from 'axios'
 import fetch from './service'

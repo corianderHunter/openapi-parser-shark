@@ -13,6 +13,7 @@ export interface RenderApiOption {
   name?: string
   outputPath?: string
   serviceImportPath?: string
+  fileSource?: string
 }
 
 export interface ContactObject {

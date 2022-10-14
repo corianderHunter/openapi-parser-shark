@@ -13,6 +13,9 @@ import { join } from 'path'
   //   'http://carbon-inspect.test.fnwintranet.com/v2/api-docs'
   // )
 
+  const json = await readSpecFromHttp(
+    'http://ecb-mengniu-customize.test.fnwintranet.com/v2/api-docs'
+  )
   // const json = await readSpec(
   //   'https://api.apis.guru/v2/specs/abstractapi.com/geolocation/1.0.0/openapi.json'
   // )
@@ -21,9 +24,9 @@ import { join } from 'path'
 
   // )
   // const json = JSON.parse(readFileSync(join(__dirname, './1.v3.json'), 'utf8'))
-  const json = JSON.parse(
-    readFileSync(join(__dirname, './swagger.json'), 'utf8')
-  )
+  // const json = JSON.parse(
+  //   readFileSync(join(__dirname, './swagger.json'), 'utf8')
+  // )
   // const json = JSON.parse(
   //   readFileSync(join(__dirname, './blueJay-app.json'), 'utf8')
   // )

@@ -5,7 +5,7 @@ import * as prettier from 'prettier'
 import { RenderApiOption } from 'src/types'
 import optimizeDeclarations from '../parser/optimizeDeclarations'
 import './partials'
-import { registerServiceImportHelper } from './partials'
+import { registerServiceImportHelper, setFileSource } from './partials'
 
 const defaultOutDir = join(resolve())
 
@@ -24,8 +24,10 @@ export const renderApi = (
     outputPath = defaultOutDir,
     name = 'api',
     serviceImportPath = './service',
+    fileSource = '',
   }: RenderApiOption = {}
 ) => {
+  setFileSource(fileSource)
   const template = readFileSync(join(__dirname, './api.handlebars'), 'utf8')
   registerServiceImportHelper(serviceImportPath)
   let content = Handlebars.compile(template)(view)

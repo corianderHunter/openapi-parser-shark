@@ -66,6 +66,15 @@ Handlebars.registerHelper('isSimpleMethod', (method: string) => {
   return isSimpleMethod(method)
 })
 
+//文档来源
+let fileSource = ''
+export const setFileSource = (value) => fileSource
+Handlebars.registerPartial('getFileSource', () => {
+  return fileSource
+})
+
+Handlebars.registerPartial('getMappedType', getMappedType)
+
 //类型映射
 Handlebars.registerPartial('getMappedType', getMappedType)
 

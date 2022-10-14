@@ -56,6 +56,7 @@ if (!configFilePath && !src) {
           outputPath,
           serviceImportPath,
           name: serviceName,
+          fileSource: src,
         })
       }
     } else {
@@ -72,6 +73,7 @@ if (!configFilePath && !src) {
         optimize: !!tags,
         outputPath: dest,
         name: name,
+        fileSource: src,
       })
     }
   } catch (error) {
